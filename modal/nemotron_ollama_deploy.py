@@ -58,11 +58,11 @@ def wait_for_ollama(timeout: int = 60, interval: int = 3) -> None:
 
 
 @app.cls(
-    scaledown_window=300,  # 5 min idle before scale down
+    scaledown_window=600,  # 10 min idle before scale down
     volumes={"/models": volume},
-    memory=4096,
+    memory=8192,           # 8GB RAM for 33B model
     gpu=GPU_TYPE,
-    timeout=600,
+    timeout=900,           # 15 min for long generations
 )
 @modal.concurrent(max_inputs=1)
 class NemotronService:

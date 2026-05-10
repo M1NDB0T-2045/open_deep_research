@@ -22,7 +22,7 @@ sys.path.insert(0, str(PROJECT_DIR / "src"))
 # Default Ollama endpoint on Modal
 OLLAMA_BASE = os.environ.get(
     "NEMOTRON_OLLAMA_URL",
-    "https://m1ndb0t-2045--mindexpander-nemotron-ollama-nemotronservice.modal.run"
+    "https://m1ndb0t-2045--mindexpander-nemotron-ollama-nemotronservi-be5f8e.modal.run"
 )
 MODEL_NAME = "nemotron3:33b"
 
