@@ -51,11 +51,16 @@ def run_research(query: str, model: str = "deepseek:deepseek-chat", search_api: 
     initial_state = {
         "messages": [{"role": "user", "content": query}],
     }
+    # Run the graph (async required for clarify_with_user node)
+    import asyncio
     
-    result = app.invoke(
-        initial_state,
-        config={"configurable": config.model_dump()}
-    )
+    async def _run():
+        return await app.ainvoke(
+            initial_state,
+            config={"configurable": config.model_dump()}
+        )
+    
+    result = asyncio.run(_run())
     
     elapsed = time.time() - start
     
